@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CerAlex – Lumânări parfumate & produse din ceară</title>
   <meta name="description" content="CerAlex – lumânări parfumate, aranjamente florale din ceară și blocuri de ceară parfumată, realizate manual cu suflet și culoare." />
+
+  <!-- Font Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --primary: #6c2bd9;   /* mov intens */
@@ -54,7 +58,7 @@
       gap: 10px;
     }
     .logo img {
-      height: 64px; /* înlocuiește logo.jpg cu emblema brandului */
+      height: 64px;
       width: auto;
       display: block;
       border-radius: 8px;
@@ -159,7 +163,7 @@
       padding: 16px;
       box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
       transition: transform 160ms ease, box-shadow 0.2s ease;
-      opacity: 0; transform: translateY(10px); /* pentru animația de reveal */
+      opacity: 0; transform: translateY(10px);
     }
     .card.reveal {
       opacity: 1; transform: translateY(0);
@@ -251,9 +255,12 @@
     /* Lightbox pentru imagini mari */
     .lightbox {
       position: fixed; inset: 0; background: rgba(0,0,0,0.7);
-      display: none; align-items: center; justify-content: center; z-index: 200;
+      display: flex; align-items: center; justify-content: center; z-index: 200;
+      opacity: 0; pointer-events: none; transition: 0.3s ease;
     }
-    .lightbox.open { display: flex; }
+    .lightbox.open {
+      opacity: 1; pointer-events: auto;
+    }
     .lightbox img {
       max-width: 90vw; max-height: 80vh; border-radius: 12px; box-shadow: 0 12px 36px rgba(0,0,0,0.5);
     }
@@ -268,8 +275,7 @@
   <header>
     <div class="topbar">
       <div class="logo">
-        <!-- Încarcă emblema brandului ca Emblema.jpg sau schimbă numele fișierului -->
-        <img src="Emblema.jpg" alt="Logo CerAlex" />
+        <img src="LOGO.jpeg" alt="Logo CerAlex" />
       </div>
       <div class="logo-text">CerAlex</div>
       <nav class="nav">
@@ -290,7 +296,8 @@
       <div class="flare" aria-hidden="true"></div>
       <span class="brand">Magia CerAlex</span>
       <p class="tagline">
-        Lumânări parfumate și aranjamente din ceară, turnate manual, cu culori vii și arome alese. Fiecare piesă spune o poveste caldă.
+        Lumânări parfumate și flori din ceară de soia, modelate manual cu suflet și culoare.
+        Forme unice, arome premium și artă creată de o tânără pasionată de frumos.
       </p>
 
       <!-- Tabs categorii (butonare rapidă) -->
@@ -304,6 +311,12 @@
     <!-- Categorie 1: Aranjamente florale -->
     <section id="florale" class="tab-panel">
       <h2>Aranjamente florale</h2>
+      <p style="color: var(--text); font-size: 17px; margin-bottom: 20px;">
+        Aranjamente florale realizate manual din <strong>cără de soia</strong>, modelate cu grijă și parfumate cu esențe premium.
+        Fiecare floare este creată de o tânără artistă de <strong>23 de ani</strong>, care pune suflet în fiecare detaliu.
+        Rezultatul? Piese WOW, elegante, colorate, perfecte pentru cadouri sau decor.
+      </p>
+
       <div class="grid">
         <article class="card">
           <div class="card-header">
@@ -312,9 +325,8 @@
           </div>
           <span class="badge">Delicate & parfumate</span>
           <p>Accente colorate care aduc prospețime în orice colț al casei.</p>
-          <!-- Imagine simplă -->
           <div class="img-slot">
-            <img src="Model-floare.1jpg.jpg" alt="Floricele simple" loading="lazy" />
+            <img src="Model-floare.jpg" alt="Floricele simple" loading="lazy" />
           </div>
           <div class="price">Preț: 7 RON</div>
           <button class="cta">Detalii</button>
@@ -327,7 +339,6 @@
           </div>
           <span class="badge">Cadouri elegante</span>
           <p>Combinații de culori și arome, atent îmbinate.</p>
-          <!-- Două imagini în același chenar -->
           <div class="img-double">
             <img src="Cos1.jpg" alt="Coșuleț cu floricele - vedere 1" loading="lazy" />
             <img src="cos2.jpg" alt="Coșuleț cu floricele - vedere 2" loading="lazy" />
@@ -343,12 +354,11 @@
           </div>
           <span class="badge">Experiență senzorială</span>
           <p>Frumusețe vizuală cu mirosuri încântătoare.</p>
-          <!-- Slider cu 3 imagini -->
           <div class="slider" data-index="0">
             <div class="slides">
               <img src="Model-floare.jpg" alt="Floricele parfumate – imagine 1" loading="lazy" />
-              <img src="poze.jpg" alt="Floricele parfumate – imagine 2" loading="lazy" />
-              <img src="poze.jpg" alt="Floricele parfumate – imagine 3" loading="lazy" />
+              <img src="Blocccc.jpg" alt="Floricele parfumate – imagine 2" loading="lazy" />
+              <img src="cocdream.jpg" alt="Floricele parfumate – imagine 3" loading="lazy" />
             </div>
             <div class="controls">
               <span class="dot active" aria-label="Imagine 1"></span>
@@ -357,6 +367,43 @@
             </div>
           </div>
           <div class="price">Preț: 7 RON</div>
+          <button class="cta">Detalii</button>
+        </article>
+
+        <!-- Buchet rotund -->
+        <article class="card">
+          <div class="card-header">
+            <h3>Buchet rotund</h3>
+            <button class="fav" aria-label="Favorite">♡</button>
+          </div>
+          <span class="badge">Eleganță pură</span>
+          <p>
+            Buchet rotund realizat manual din <strong>cără de soia</strong>, colorat natural și parfumat cu esențe premium.
+            Fiecare floare este modelată petală cu petală, pentru un efect vizual WOW care atrage privirile instant.
+          </p>
+          <div class="img-slot">
+            <img src="Buchetrotund.jpeg" alt="Buchet rotund din ceară" loading="lazy" />
+          </div>
+          <div class="price">Preț: 100 RON</div>
+          <button class="cta">Detalii</button>
+        </article>
+
+        <!-- Buchet normal -->
+        <article class="card">
+          <div class="card-header">
+            <h3>Buchet normal</h3>
+            <button class="fav" aria-label="Favorite">♡</button>
+          </div>
+          <span class="badge">Handmade cu pasiune</span>
+          <p>
+            Buchet clasic din <strong>cără de soia</strong>, parfumat cu esențe florale fine.
+            Creat manual de o tânără artistă de <strong>23 de ani</strong>, care transformă pasiunea pentru artă
+            în lumânări și flori unice, pline de emoție și culoare.
+          </p>
+          <div class="img-slot">
+            <img src="Buchetnormal.jpeg" alt="Buchet normal din ceară" loading="lazy" />
+          </div>
+          <div class="price">Preț: 70 RON</div>
           <button class="cta">Detalii</button>
         </article>
       </div>
@@ -389,7 +436,7 @@
           <p>Se topesc ușor și eliberează parfum plăcut.</p>
           <div class="img-double">
             <img src="Bloc-ceara.jpg" alt="Bloc de ceară – aromă 1" loading="lazy" />
-            <img src="poze.jpg" alt="Bloc de ceară – aromă 2" loading="lazy" />
+            <img src="Blocccc.jpg" alt="Bloc de ceară – aromă 2" loading="lazy" />
           </div>
           <div class="price">Preț: 20 RON</div>
           <button class="cta">Detalii</button>
@@ -409,7 +456,7 @@
           <span class="badge">Scorțișoară • Vanilie • Brad</span>
           <p>Inspirate din magia iernii.</p>
           <div class="img-slot">
-            <img src="poze.jpg" alt="Lumânare de sezon" loading="lazy" />
+            <img src="bradut.jpg" alt="Lumânare de sezon" loading="lazy" />
           </div>
           <div class="price">Preț: 30 RON</div>
           <button class="cta">Detalii</button>
@@ -442,8 +489,10 @@
     <h2 id="despre">Despre CerAlex</h2>
     <section class="info">
       <p>
-        CerAlex s-a născut din pasiunea pentru culoare și parfum. Îmbin forme îndrăznețe cu arome calde,
-        pentru produse care aduc bucurie în casele oamenilor. Fiecare creație este turnată manual, cu grijă pentru detalii.
+        CerAlex este visul unei tinere de <strong>23 de ani</strong>, pasionată de artă, parfumuri și culori.
+        Din dorința de a crea ceva unic, a început să modeleze flori și lumânări din <strong>cără de soia</strong>,
+        transformând fiecare buchet într-o mică operă handmade.  
+        Fiecare produs este turnat manual, cu atenție la detalii, cu emoție și cu multă pasiune.
       </p>
     </section>
 
@@ -452,10 +501,10 @@
     <section class="info">
       <p>Ai întrebări sau vrei o comandă personalizată? Scrie-mi și îți răspund cu drag.</p>
       <div class="nav" aria-label="Linkuri contact">
-        <a href="https://www.facebook.com/people/Ceralex/100069947412328/?mibextid=wwXIfr&rdid=qJ5MxJXuccJH2E9D&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16MhW5B9Tk%2F%3Fmibextid%3DwwXIfr" aria-label="Facebook">Facebook</a>
-        <a href="https://wa.me/40700000000" target="_blank" rel="noopener" aria-label="WhatsApp">WhatsApp</a>
-        <a href="tel:+40700000000" aria-label="Telefon">Telefon</a>
-        <a href="https://www.instagram.com/cera_lex3/?igsh=MTlwcTJmZnR6bnZmYg%3D%3D#" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+        <a href="https://www.facebook.com/share/198EcJiwg5/?mibextid=wwXIfr" aria-label="Facebook">Facebook</a>
+        <a href="https://wa.me/40742904306" target="_blank" rel="noopener" aria-label="WhatsApp">WhatsApp</a>
+        <a href="tel:+40742904306" aria-label="Telefon">Telefon</a>
+        <a href="https://www.instagram.com/cera_lex3?stkn=MTlwcTJmZnR6bnZmYg==" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
       </div>
     </section>
 
@@ -463,6 +512,9 @@
     <footer id="livrari">
       <div class="counter">Livrări efectuate: <span id="count">0</span></div>
       <p>Fiecare pachet este pregătit cu grijă, ca magia lumânărilor să ajungă la tine în siguranță.</p>
+      <p style="margin-top: 10px; font-weight: 600;">
+        Magia lumânărilor handmade începe aici. Fiecare creație este turnată cu grijă și pasiune.
+      </p>
       <p>© CerAlex – Handmade cu pasiune</p>
     </footer>
   </div>
@@ -485,7 +537,6 @@
         panels.forEach(p => {
           p.hidden = p.id !== id;
         });
-        // Scroll la secțiunea activă
         const panel = document.getElementById(id);
         panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
