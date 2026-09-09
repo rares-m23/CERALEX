@@ -15,382 +15,746 @@
       --accent: #ff3d9b;    /* roz vibrant */
       --mint: #2dd4bf;      /* turcoaz */
       --sun:  #fbbf24;      /* galben cald */
-      --dark: #0f172a;      /* albastru foarte închis */
+      --dark: #020617;      /* foarte închis */
       --text: #334155;
-      --bg1:  #fdf2f8;      /* roz foarte deschis */
-      --bg2:  #ede9fe;      /* mov pastel */
-      --bg3:  #cffafe;      /* turcoaz pastel */
+      --bg1:  #0b1120;      /* dark base */
+      --bg2:  #1e293b;
+      --bg3:  #020617;
       --white:#ffffff;
     }
 
-    /* Fundal cu gradient animat */
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: "Poppins", sans-serif;
-      color: var(--dark);
-      background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
-      background-size: 200% 200%;
-      animation: bgShift 12s ease-in-out infinite;
+      color: var(--white);
+      background: radial-gradient(circle at top, #1e293b 0, #020617 45%, #000 100%);
       min-height: 100vh;
     }
-    @keyframes bgShift {
-      0%   { background-position: 0% 50%; }
-      50%  { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+
+    /* Glow background */
+    .bg-glow {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background:
+        radial-gradient(600px 300px at 10% 0%, rgba(139,92,246,0.35), transparent 60%),
+        radial-gradient(600px 300px at 90% 10%, rgba(255,61,155,0.35), transparent 60%),
+        radial-gradient(600px 300px at 50% 100%, rgba(45,212,191,0.25), transparent 60%);
+      filter: blur(2px);
     }
 
-    /* Header */
     header {
       position: sticky;
       top: 0;
-      backdrop-filter: blur(12px);
-      background: rgba(255,255,255,0.6);
-      border-bottom: 1px solid rgba(15,23,42,0.08);
-      z-index: 100;
+      backdrop-filter: blur(18px);
+      background: rgba(15,23,42,0.85);
+      border-bottom: 1px solid rgba(148,163,184,0.35);
+      z-index: 50;
     }
+
     .topbar {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 14px 24px;
+      padding: 12px 20px;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      gap: 10px;
+      justify-content: space-between;
+      gap: 16px;
     }
-    .logo img {
-      height: 80px;
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-wrap img {
+      height: 60px;
       width: auto;
-      display: block;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      box-shadow: 0 0 25px rgba(255,255,255,0.12);
     }
+
     .logo-text {
       font-weight: 900;
-      font-size: 32px;
+      font-size: 26px;
       letter-spacing: 1px;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
+      background: linear-gradient(90deg, var(--mint), var(--accent), var(--sun));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      text-shadow: 0 2px 10px rgba(255,255,255,0.6);
     }
 
-    /* Meniu */
-    .nav {
+    nav.nav {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: flex-end;
     }
-    .nav a {
+
+    nav.nav a {
       text-decoration: none;
-      color: var(--dark);
-      background: rgba(255,255,255,0.9);
-      border: 1px solid rgba(15, 23, 42, 0.08);
-      border-radius: 999px;
-      padding: 10px 16px;
-      font-size: 15px;
+      color: #e5e7eb;
+      font-size: 14px;
       font-weight: 600;
-      transition: 0.3s;
-    }
-    .nav a:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(15,23,42,0.12);
-      background: #fff;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: radial-gradient(circle at top, rgba(15,23,42,0.9), rgba(15,23,42,0.7));
+      transition: 0.2s;
     }
 
-    /* Container */
-    .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
+    nav.nav a:hover {
+      color: #f9fafb;
+      border-color: var(--accent);
+      box-shadow: 0 0 18px rgba(255,61,155,0.45);
+      transform: translateY(-1px);
+    }
 
-    /* HERO WOW */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 20px 40px;
+    }
+
+    /* HERO */
     .hero {
-      margin-top: 18px;
-      background: linear-gradient(135deg, rgba(139,92,246,0.18), rgba(255,61,155,0.18));
-      border: 1px solid rgba(139,92,246,0.25);
+      margin-top: 22px;
       border-radius: 24px;
-      padding: 40px;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 12px 40px rgba(15, 23, 42, 0.15);
-      overflow: hidden;
+      padding: 28px 24px;
       position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(15,23,42,0.9), rgba(15,23,42,0.85)),
+        radial-gradient(circle at top left, rgba(139,92,246,0.35), transparent 60%);
+      border: 1px solid rgba(148,163,184,0.6);
+      box-shadow: 0 25px 60px rgba(15,23,42,0.9);
     }
-    .hero .brand {
-      display: inline-block;
+
+    .hero-title {
+      font-size: 34px;
       font-weight: 900;
-      font-size: 40px;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
       background: linear-gradient(90deg, var(--primary), var(--accent), var(--sun));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      text-shadow: 0 4px 14px rgba(255,255,255,0.6);
-    }
-    .tagline {
-      margin-top: 12px;
-      font-size: 20px;
-      color: var(--text);
-      font-weight: 500;
-      line-height: 1.6;
-    }
-    .flare {
-      position: absolute; inset: -60px;
-      background:
-        radial-gradient(600px 300px at 10% 0%, rgba(255, 61, 155, 0.25), transparent 60%),
-        radial-gradient(600px 300px at 90% 10%, rgba(45, 212, 191, 0.25), transparent 60%);
-      pointer-events: none;
+      margin-bottom: 10px;
     }
 
-    /* Tabs */
+    .hero-sub {
+      font-size: 17px;
+      color: #e5e7eb;
+      max-width: 640px;
+      line-height: 1.7;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: radial-gradient(circle at top, rgba(45,212,191,0.35), rgba(15,23,42,0.9));
+      border: 1px solid rgba(45,212,191,0.7);
+      font-size: 13px;
+      color: #f9fafb;
+    }
+
+    .hero-badge span {
+      font-weight: 700;
+      color: var(--sun);
+    }
+
     .tabs {
-      margin-top: 30px;
+      margin-top: 22px;
       display: flex;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
     }
+
     .tab-btn {
-      border: 1px solid rgba(15, 23, 42, 0.12);
-      background: #fff;
-      color: var(--dark);
-      border-radius: 12px;
-      padding: 12px 18px;
-      cursor: pointer;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.7);
+      background: radial-gradient(circle at top, rgba(15,23,42,0.9), rgba(15,23,42,0.7));
+      color: #e5e7eb;
+      font-size: 14px;
       font-weight: 600;
-      transition: 0.3s;
+      padding: 8px 14px;
+      cursor: pointer;
+      transition: 0.2s;
     }
+
     .tab-btn.active {
-      background: linear-gradient(90deg, var(--mint), var(--sun));
-      color: var(--dark);
-      box-shadow: 0 8px 20px rgba(251,191,36,0.25);
-      transform: translateY(-2px);
+      border-color: var(--accent);
+      color: #f9fafb;
+      box-shadow: 0 0 18px rgba(255,61,155,0.55);
+      background: linear-gradient(90deg, var(--primary), var(--accent));
     }
-<!-- Categorie 1: Aranjamente florale -->
-<section id="florale" class="tab-panel">
-  <h2>Aranjamente florale</h2>
 
-  <p style="color: var(--text); font-size: 17px; margin-bottom: 20px;">
-    Aranjamente florale realizate manual din <strong>cără de soia</strong>, modelate cu grijă și parfumate cu esențe premium.
-    Fiecare floare este creată de o tânără artistă de <strong>23 de ani</strong>, care pune suflet în fiecare detaliu.
-    Rezultatul? Piese WOW, elegante, colorate, perfecte pentru cadouri sau decor.
-  </p>
+    h2.section-title {
+      margin: 32px 0 12px;
+      font-size: 24px;
+      font-weight: 800;
+      color: #f9fafb;
+    }
 
-  <div class="grid">
+    .section-desc {
+      font-size: 15px;
+      color: #cbd5f5;
+      max-width: 700px;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
 
-    <!-- Floricele simple -->
-    <article class="card">
-      <div class="card-header">
-        <h3>Floricele simple</h3>
-        <button class="fav" aria-label="Favorite">♡</button>
-      </div>
-      <span class="badge">Delicate & parfumate</span>
-      <p>Accente colorate care aduc prospețime în orice colț al casei.</p>
-      <div class="img-slot">
-        <img src="Model-floare.jpg" alt="Floricele simple" loading="lazy" />
-      </div>
-      <div class="price">Preț: 7 RON</div>
-      <button class="cta">Detalii</button>
-    </article>
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
 
-    <!-- Coșulețe -->
-    <article class="card">
-      <div class="card-header">
-        <h3>Coșulețe cu floricele</h3>
-        <button class="fav" aria-label="Favorite">♡</button>
-      </div>
-      <span class="badge">Cadouri elegante</span>
-      <p>Combinații de culori și arome, atent îmbinate.</p>
-      <div class="img-double">
-        <img src="Cos1.jpg" alt="Coșuleț cu floricele - vedere 1" loading="lazy" />
-        <img src="cos2.jpg" alt="Coșuleț cu floricele - vedere 2" loading="lazy" />
-      </div>
-      <div class="price">Preț: 70 RON</div>
-      <button class="cta">Detalii</button>
-    </article>
+    .card {
+      grid-column: span 12;
+      background: radial-gradient(circle at top, rgba(15,23,42,0.95), rgba(15,23,42,0.9));
+      border-radius: 18px;
+      border: 1px solid rgba(148,163,184,0.6);
+      padding: 16px;
+      box-shadow: 0 18px 40px rgba(15,23,42,0.9);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+      opacity: 0;
+      transform: translateY(10px);
+    }
 
-    <!-- Floricele parfumate -->
-    <article class="card">
-      <div class="card-header">
-        <h3>Floricele parfumate</h3>
-        <button class="fav" aria-label="Favorite">♡</button>
-      </div>
-      <span class="badge">Experiență senzorială</span>
-      <p>Frumusețe vizuală cu mirosuri încântătoare.</p>
+    .card.reveal {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
 
-      <div class="slider" data-index="0">
-        <div class="slides">
-          <img src="Model-floare.jpg" alt="Floricele parfumate – imagine 1" loading="lazy" />
-          <img src="Blocccc.jpg" alt="Floricele parfumate – imagine 2" loading="lazy" />
-          <img src="cocdream.jpg" alt="Floricele parfumate – imagine 3" loading="lazy" />
-        </div>
-        <div class="controls">
-          <span class="dot active" aria-label="Imagine 1"></span>
-          <span class="dot" aria-label="Imagine 2"></span>
-          <span class="dot" aria-label="Imagine 3"></span>
-        </div>
-      </div>
+    @media (min-width: 720px) {
+      .card { grid-column: span 6; }
+    }
 
-      <div class="price">Preț: 7 RON</div>
-      <button class="cta">Detalii</button>
-    </article>
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
 
-    <!-- Buchet rotund -->
-    <article class="card">
-      <div class="card-header">
-        <h3>Buchet rotund</h3>
-        <button class="fav" aria-label="Favorite">♡</button>
-      </div>
-      <span class="badge">Eleganță pură</span>
-      <p>
-        Buchet rotund realizat manual din <strong>cără de soia</strong>, colorat natural și parfumat cu esențe premium.
-        Fiecare floare este modelată petală cu petală, pentru un efect vizual WOW care atrage privirile instant.
-      </p>
-      <div class="img-slot">
-        <img src="Buchetrotund.jpeg" alt="Buchet rotund din ceară" loading="lazy" />
-      </div>
-      <div class="price">Preț: 100 RON</div>
-      <button class="cta">Detalii</button>
-    </article>
+    .card h3 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--mint);
+    }
 
-    <!-- Buchet normal -->
-    <article class="card">
-      <div class="card-header">
-        <h3>Buchet normal</h3>
-        <button class="fav" aria-label="Favorite">♡</button>
-      </div>
-      <span class="badge">Handmade cu pasiune</span>
-      <p>
-        Buchet clasic din <strong>cără de soia</strong>, parfumat cu esențe florale fine.
-        Creat manual de o tânără artistă de <strong>23 de ani</strong>, care transformă pasiunea pentru artă
-        în lumânări și flori unice, pline de emoție și culoare.
-      </p>
-      <div class="img-slot">
-        <img src="Buchetnormal.jpeg" alt="Buchet normal din ceară" loading="lazy" />
-      </div>
-      <div class="price">Preț: 70 RON</div>
-      <button class="cta">Detalii</button>
-    </article>
+    .badge {
+      display: inline-block;
+      margin-top: 4px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+      background: radial-gradient(circle at top, rgba(45,212,191,0.35), rgba(15,23,42,0.9));
+      border: 1px solid rgba(45,212,191,0.7);
+      color: #e5e7eb;
+    }
 
+    .card p {
+      font-size: 14px;
+      color: #cbd5f5;
+      margin: 8px 0 10px;
+      line-height: 1.6;
+    }
+
+    .fav {
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      font-size: 20px;
+      color: #64748b;
+      transition: 0.15s;
+    }
+
+    .fav.active {
+      color: var(--accent);
+      transform: scale(1.15);
+      text-shadow: 0 0 12px rgba(255,61,155,0.8);
+    }
+
+    .img-slot {
+      width: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(148,163,184,0.7);
+      margin-bottom: 8px;
+      cursor: zoom-in;
+    }
+
+    .img-slot img {
+      width: 100%;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .img-slot:hover img {
+      transform: scale(1.03);
+    }
+
+    .img-double {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      border-radius: 14px;
+      border: 1px solid rgba(148,163,184,0.7);
+      padding: 8px;
+      margin-bottom: 8px;
+      cursor: zoom-in;
+    }
+
+    .img-double img {
+      width: 100%;
+      border-radius: 10px;
+      display: block;
+    }
+
+    .slider {
+      position: relative;
+      border-radius: 14px;
+      border: 1px solid rgba(148,163,184,0.7);
+      overflow: hidden;
+      margin-bottom: 8px;
+      cursor: zoom-in;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.4s ease;
+    }
+
+    .slides img {
+      width: 100%;
+      flex: 0 0 100%;
+      display: block;
+    }
+
+    .controls {
+      position: absolute;
+      inset: auto 0 8px 0;
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #64748b;
+      border: 1px solid #94a3b8;
+      cursor: pointer;
+      opacity: 0.8;
+    }
+
+    .dot.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      opacity: 1;
+      box-shadow: 0 0 10px rgba(255,61,155,0.8);
+    }
+
+    .price {
+      margin-top: 4px;
+      font-weight: 800;
+      font-size: 15px;
+      color: var(--sun);
+    }
+
+    .cta {
+      margin-top: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      border: none;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #f9fafb;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      box-shadow: 0 0 20px rgba(139,92,246,0.7);
+      transition: 0.18s;
+    }
+
+    .cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 26px rgba(255,61,155,0.9);
+    }
+
+    .info {
+      margin-top: 26px;
+      border-radius: 18px;
+      border: 1px solid rgba(148,163,184,0.7);
+      padding: 18px;
+      background: radial-gradient(circle at top, rgba(15,23,42,0.95), rgba(15,23,42,0.9));
+      box-shadow: 0 18px 40px rgba(15,23,42,0.9);
+      font-size: 15px;
+      color: #e5e7eb;
+      line-height: 1.7;
+    }
+
+    .info strong {
+      color: var(--mint);
+    }
+
+    .contact-links {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .contact-links a {
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.7);
+      color: #e5e7eb;
+      background: radial-gradient(circle at top, rgba(15,23,42,0.9), rgba(15,23,42,0.7));
+      transition: 0.2s;
+    }
+
+    .contact-links a:hover {
+      border-color: var(--mint);
+      box-shadow: 0 0 18px rgba(45,212,191,0.7);
+      color: #f9fafb;
+    }
+
+    footer {
+      margin-top: 32px;
+      border-radius: 18px;
+      border: 1px solid rgba(148,163,184,0.7);
+      padding: 20px;
+      text-align: center;
+      background: radial-gradient(circle at top, rgba(15,23,42,0.95), rgba(15,23,42,0.9));
+      box-shadow: 0 18px 40px rgba(15,23,42,0.9);
+      font-size: 14px;
+      color: #e5e7eb;
+    }
+
+    .counter {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.25s;
+      z-index: 100;
+    }
+
+    .lightbox.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 80vh;
+      border-radius: 16px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.9);
+    }
+
+    .lightbox .close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: none;
+      background: #f9fafb;
+      color: #020617;
+      font-weight: 800;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+
+<header>
+  <div class="topbar">
+    <div class="logo-wrap">
+      <img src="LOGO.jpeg" alt="Logo CerAlex" />
+      <div class="logo-text">CerAlex</div>
+    </div>
+    <nav class="nav">
+      <a href="#acasa">Acasă</a>
+      <a href="#florale">Aranjamente florale</a>
+      <a href="#blocuri">Blocuri de ceară</a>
+      <a href="#iarna">Sărbători</a>
+      <a href="#despre">Despre</a>
+      <a href="#contact">Contact</a>
+      <a href="#livrari">Livrări</a>
+    </nav>
   </div>
-</section>
+</header>
 
-<!-- Categorie 2: Blocuri din ceară parfumată -->
-<section id="blocuri" class="tab-panel" hidden>
-  <h2>Blocuri din ceară parfumată</h2>
+<div class="container">
 
-  <div class="grid">
+  <section class="hero" id="acasa">
+    <div class="hero-title">Magia CerAlex</div>
+    <p class="hero-sub">
+      Lumânări parfumate și flori din ceară de soia, modelate manual cu suflet și culoare.
+      Fiecare piesă este creată de o tânără artistă de 23 de ani, care transformă ceara în artă parfumată.
+    </p>
+    <div class="hero-badge">
+      <span>Handmade</span> • ceară de soia • arome premium • cadouri care nu se ofilesc
+    </div>
 
-    <article class="card">
-      <div class="card-header">
-        <h3>Forme variate</h3>
-        <button class="fav" aria-label="Favorite">♡</button>
-      </div>
-      <span class="badge">Culori tari</span>
-      <p>Blocuri turnate manual în forme jucăușe.</p>
-      <div class="img-slot">
-        <img src="Bloc-ceara.jpg" alt="Bloc de ceară – forme variate" loading="lazy" />
-      </div>
-      <div class="price">Preț: 15 RON</div>
-      <button class="cta">Detalii</button>
-    </article>
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="florale">Aranjamente florale</button>
+      <button class="tab-btn" data-tab="blocuri">Blocuri din ceară</button>
+      <button class="tab-btn" data-tab="iarna">Sărbători</button>
+    </div>
+  </section>
 
-    <article class="card">
-      <div class="card-header">
-        <h3>Arome intense</h3>
-        <button class="fav" aria-label="Favorite">♡</button>
-      </div>
-      <span class="badge">Relaxare rapidă</span>
-      <p>Se topesc ușor și eliberează parfum plăcut.</p>
-      <div class="img-double">
-        <img src="Bloc-ceara.jpg" alt="Bloc de ceară – aromă 1" loading="lazy" />
-        <img src="Blocccc.jpg" alt="Bloc de ceară – aromă 2" loading="lazy" />
-      </div>
-      <div class="price">Preț: 20 RON</div>
-      <button class="cta">Detalii</button>
-    </article>
+  <!-- Aranjamente florale -->
+  <section id="florale" class="tab-panel">
+    <h2 class="section-title">Aranjamente florale</h2>
+    <p class="section-desc">
+      Aranjamente florale realizate manual din ceară de soia, modelate petală cu petală și parfumate cu esențe premium.
+      Fiecare buchet este o piesă unică, creată cu grijă și atenție la detalii.
+    </p>
 
-  </div>
-</section>
+    <div class="grid">
 
-<!-- Categorie 3: Sărbătorile de iarnă -->
-<section id="iarna" class="tab-panel" hidden>
-  <h2>Sărbătorile de iarnă</h2>
-
-  <div class="grid">
-
-    <article class="card">
-      <div class="card-header">
-        <h3>Lumânări de sezon</h3>
-        <button class="fav" aria-label="Favorite">♡</button>
-      </div>
-      <span class="badge">Scorțișoară • Vanilie • Brad</span>
-      <p>Inspirate din magia iernii.</p>
-      <div class="img-slot">
-        <img src="bradut.jpg" alt="Lumânare de sezon" loading="lazy" />
-      </div>
-      <div class="price">Preț: 30 RON</div>
-      <button class="cta">Detalii</button>
-    </article>
-
-    <article class="card">
-      <div class="card-header">
-        <h3>Aranjamente de sezon</h3>
-        <button class="fav" aria-label="Favorite">♡</button>
-      </div>
-      <span class="badge">Festiv & cald</span>
-      <p>Culori bogate și detalii jucăușe.</p>
-
-      <div class="slider" data-index="0">
-        <div class="slides">
-          <img src="3.jpg" alt="Aranjament de sezon – imagine 1" loading="lazy" />
-          <img src="Brad.jpg" alt="Aranjament de sezon – imagine 2" loading="lazy" />
+      <article class="card">
+        <div class="card-header">
+          <h3>Floricele simple</h3>
+          <button class="fav" aria-label="Favorite">♡</button>
         </div>
-        <div class="controls">
-          <span class="dot active" aria-label="Imagine 1"></span>
-          <span class="dot" aria-label="Imagine 2"></span>
+        <span class="badge">Delicate & parfumate</span>
+        <p>Accente colorate care aduc prospețime în orice colț al casei.</p>
+        <div class="img-slot">
+          <img src="Model-floare.jpg" alt="Floricele simple" loading="lazy" />
         </div>
-      </div>
+        <div class="price">Preț: 7 RON</div>
+        <button class="cta">Detalii</button>
+      </article>
 
-      <div class="price">Preț: 25 RON</div>
-      <button class="cta">Detalii</button>
-    </article>
+      <article class="card">
+        <div class="card-header">
+          <h3>Coșulețe cu floricele</h3>
+          <button class="fav" aria-label="Favorite">♡</button>
+        </div>
+        <span class="badge">Cadouri elegante</span>
+        <p>Combinații de culori și arome, atent îmbinate.</p>
+        <div class="img-double">
+          <img src="Cos1.jpg" alt="Coșuleț cu floricele" loading="lazy" />
+          <img src="Blocccc.jpg" alt="Detaliu decorativ" loading="lazy" />
+        </div>
+        <div class="price">Preț: 70 RON</div>
+        <button class="cta">Detalii</button>
+      </article>
 
-  </div>
-</section>
-<!-- Despre CerAlex -->
-<h2 id="despre">Despre CerAlex</h2>
-<section class="info">
-  <p style="font-size: 17px; line-height: 1.7;">
-    CerAlex este povestea unei tinere de <strong>23 de ani</strong> care a transformat pasiunea pentru artă
-    în creații parfumate din ceară de soia.  
-    Fiecare floare, buchet și lumânare este turnată manual, colorată cu grijă și parfumată cu esențe premium.
-    Produsele CerAlex nu sunt doar obiecte — sunt emoții, culori și parfumuri care rămân în suflet.
-  </p>
-</section>
+      <article class="card">
+        <div class="card-header">
+          <h3>Floricele parfumate</h3>
+          <button class="fav" aria-label="Favorite">♡</button>
+        </div>
+        <span class="badge">Experiență senzorială</span>
+        <p>Frumusețe vizuală cu mirosuri încântătoare.</p>
+        <div class="slider">
+          <div class="slides">
+            <img src="Model-floare.jpg" alt="Floricele parfumate 1" loading="lazy" />
+            <img src="Blocccc.jpg" alt="Floricele parfumate 2" loading="lazy" />
+            <img src="3.jpg" alt="Floricele parfumate 3" loading="lazy" />
+          </div>
+          <div class="controls">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+        <div class="price">Preț: 7 RON</div>
+        <button class="cta">Detalii</button>
+      </article>
 
-<!-- Contact -->
-<h2 id="contact">Contact</h2>
-<section class="info">
-  <p style="font-size: 17px;">
-    Vrei un buchet personalizat? O lumânare cu aroma ta preferată?  
-    Scrie-mi și creez ceva special doar pentru tine.
-  </p>
+      <article class="card">
+        <div class="card-header">
+          <h3>Buchet rotund</h3>
+          <button class="fav" aria-label="Favorite">♡</button>
+        </div>
+        <span class="badge">Eleganță pură</span>
+        <p>
+          Buchet rotund realizat manual din ceară de soia, colorat natural și parfumat cu esențe premium.
+          Fiecare floare este modelată petală cu petală pentru un efect vizual WOW.
+        </p>
+        <div class="img-slot">
+          <img src="Buchetrotund.jpeg" alt="Buchet rotund din ceară" loading="lazy" />
+        </div>
+        <div class="price">Preț: 100 RON</div>
+        <button class="cta">Detalii</button>
+      </article>
 
-  <div class="nav" aria-label="Linkuri contact">
-    <a href="https://www.facebook.com/share/198EcJiwg5/?mibextid=wwXIfr" aria-label="Facebook">Facebook</a>
-    <a href="https://wa.me/40742904306" target="_blank" rel="noopener" aria-label="WhatsApp">WhatsApp</a>
-    <a href="tel:+40742904306" aria-label="Telefon">Telefon</a>
-    <a href="https://www.instagram.com/cera_lex3?stkn=MTlwcTJmZnR6bnZmYg==" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
-  </div>
-</section>
+      <article class="card">
+        <div class="card-header">
+          <h3>Buchet normal</h3>
+          <button class="fav" aria-label="Favorite">♡</button>
+        </div>
+        <span class="badge">Handmade cu pasiune</span>
+        <p>
+          Buchet clasic din ceară de soia, parfumat cu esențe florale fine.
+          Creat manual de o tânără artistă de 23 de ani, pentru momente speciale.
+        </p>
+        <div class="img-slot">
+          <img src="Buchetnormal.jpeg" alt="Buchet normal din ceară" loading="lazy" />
+        </div>
+        <div class="price">Preț: 70 RON</div>
+        <button class="cta">Detalii</button>
+      </article>
 
-<!-- Livrări -->
-<footer id="livrari">
-  <div class="counter">Livrări efectuate: <span id="count">0</span></div>
-  <p>Fiecare pachet este pregătit cu grijă, ca magia lumânărilor să ajungă la tine în siguranță.</p>
-  <p style="margin-top: 10px; font-weight: 600;">
-    Magia lumânărilor handmade începe aici. Fiecare creație este turnată cu grijă și pasiune.
-  </p>
-  <p>© CerAlex – Handmade cu suflet</p>
-</footer>
+    </div>
+  </section>
+
+  <!-- Blocuri din ceară -->
+  <section id="blocuri" class="tab-panel" hidden>
+    <h2 class="section-title">Blocuri din ceară parfumată</h2>
+    <p class="section-desc">
+      Blocuri din ceară de soia, turnate manual în forme variate, cu arome intense.
+      Perfecte pentru aromatizarea rapidă a spațiului.
+    </p>
+
+    <div class="grid">
+      <article class="card">
+        <div class="card-header">
+          <h3>Forme variate</h3>
+          <button class="fav" aria-label="Favorite">♡</button>
+        </div>
+        <span class="badge">Culori tari</span>
+        <p>Blocuri turnate manual în forme jucăușe.</p>
+        <div class="img-slot">
+          <img src="Bloc-ceara.jpg" alt="Bloc de ceară – forme variate" loading="lazy" />
+        </div>
+        <div class="price">Preț: 15 RON</div>
+        <button class="cta">Detalii</button>
+      </article>
+
+      <article class="card">
+        <div class="card-header">
+          <h3>Arome intense</h3>
+          <button class="fav" aria-label="Favorite">♡</button>
+        </div>
+        <span class="badge">Relaxare rapidă</span>
+        <p>Se topesc ușor și eliberează parfum plăcut.</p>
+        <div class="img-double">
+          <img src="Bloc-ceara.jpg" alt="Bloc de ceară – aromă 1" loading="lazy" />
+          <img src="Blocccc.jpg" alt="Bloc de ceară – aromă 2" loading="lazy" />
+        </div>
+        <div class="price">Preț: 20 RON</div>
+        <button class="cta">Detalii</button>
+      </article>
+    </div>
+  </section>
+
+  <!-- Sărbători -->
+  <section id="iarna" class="tab-panel" hidden>
+    <h2 class="section-title">Sărbătorile de iarnă</h2>
+    <p class="section-desc">
+      Lumânări și aranjamente inspirate din magia iernii: scorțișoară, vanilie, brad și culori calde.
+    </p>
+
+    <div class="grid">
+      <article class="card">
+        <div class="card-header">
+          <h3>Lumânări de sezon</h3>
+          <button class="fav" aria-label="Favorite">♡</button>
+        </div>
+        <span class="badge">Scorțișoară • Vanilie • Brad</span>
+        <p>Inspirate din magia sărbătorilor.</p>
+        <div class="img-slot">
+          <img src="Brad.jpg" alt="Lumânare de sezon" loading="lazy" />
+        </div>
+        <div class="price">Preț: 30 RON</div>
+        <button class="cta">Detalii</button>
+      </article>
+
+      <article class="card">
+        <div class="card-header">
+          <h3>Aranjamente de sezon</h3>
+          <button class="fav" aria-label="Favorite">♡</button>
+        </div>
+        <span class="badge">Festiv & cald</span>
+        <p>Culori bogate și detalii jucăușe.</p>
+        <div class="slider">
+          <div class="slides">
+            <img src="3.jpg" alt="Aranjament de sezon 1" loading="lazy" />
+            <img src="Brad.jpg" alt="Aranjament de sezon 2" loading="lazy" />
+          </div>
+          <div class="controls">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+        <div class="price">Preț: 25 RON</div>
+        <button class="cta">Detalii</button>
+      </article>
+    </div>
+  </section>
+
+  <!-- Despre -->
+  <section id="despre" class="info">
+    <p>
+      CerAlex este povestea unei tinere de <strong>23 de ani</strong> care a transformat pasiunea pentru artă
+      în creații parfumate din ceară de soia. Fiecare floare, buchet și lumânare este turnată manual,
+      colorată cu grijă și parfumată cu esențe premium. Produsele CerAlex nu sunt doar obiecte —
+      sunt emoții, culori și parfumuri care rămân în suflet.
+    </p>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="info">
+    <p>
+      Vrei un buchet personalizat? O lumânare cu aroma ta preferată?
+      Scrie-mi și creez ceva special doar pentru tine.
+    </p>
+    <div class="contact-links">
+      <a href="https://www.facebook.com/share/198EcJiwg5/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://wa.me/40742904306" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="tel:+40742904306">Telefon</a>
+      <a href="https://www.instagram.com/cera_lex3?stkn=MTlwcTJmZnR6bnZmYg==" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </section>
+
+  <!-- Footer / Livrări -->
+  <footer id="livrari">
+    <div class="counter">Livrări efectuate: <span id="count">0</span></div>
+    <p>Fiecare pachet este pregătit cu grijă, ca magia lumânărilor să ajungă la tine în siguranță.</p>
+    <p style="margin-top: 6px;">© CerAlex – Handmade cu suflet</p>
+  </footer>
+
+</div>
 
 <!-- Lightbox -->
 <div class="lightbox" id="lightbox" aria-hidden="true">
@@ -399,7 +763,7 @@
 </div>
 
 <script>
-  // Tabs pentru categorii
+  // Tabs
   const tabs = document.querySelectorAll('.tab-btn');
   const panels = document.querySelectorAll('.tab-panel');
   tabs.forEach(btn => {
@@ -412,7 +776,7 @@
     });
   });
 
-  // Animație reveal la scroll
+  // Reveal cards
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) entry.target.classList.add('reveal');
@@ -420,12 +784,12 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.card').forEach(el => observer.observe(el));
 
-  // Favorite (inimioară)
+  // Favorite
   document.querySelectorAll('.fav').forEach(btn => {
     btn.addEventListener('click', () => btn.classList.toggle('active'));
   });
 
-  // Slider cu dots
+  // Slider dots
   document.querySelectorAll('.slider').forEach(slider => {
     const slides = slider.querySelector('.slides');
     const dots = slider.querySelectorAll('.dot');
@@ -453,7 +817,7 @@
     lightbox.setAttribute('aria-hidden', 'true');
     lbImg.src = '';
   });
-  lightbox.addEventListener('click', (e) => {
+  lightbox.addEventListener('click', e => {
     if (e.target === lightbox) {
       lightbox.classList.remove('open');
       lightbox.setAttribute('aria-hidden', 'true');
@@ -461,7 +825,7 @@
     }
   });
 
-  // Contor livrări animat
+  // Counter
   function animateCount(el, to = 128, duration = 1200) {
     const start = 0;
     const startTime = performance.now();
@@ -474,19 +838,6 @@
     requestAnimationFrame(update);
   }
   animateCount(document.getElementById('count'), 128);
-
-  // Navigație smooth
-  document.querySelectorAll('nav.nav a').forEach(a => {
-    a.addEventListener('click', (e) => {
-      const href = a.getAttribute('href');
-      if (href.startsWith('#')) {
-        e.preventDefault();
-        const target = document.querySelector(href);
-        if (!target) return;
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
 </script>
 
 </body>
